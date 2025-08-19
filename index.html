@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LazyChef - Quick recipes for lazy people</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-content">
+                <div class="sloth-mascot">🦥</div>
+                <h1 class="welcome-title">Welcome to LazyChef!</h1>
+                <p class="welcome-subtitle">Quick recipes for lazy people</p>
+                <div class="onboarding-form">
+                    <input type="text" id="user-name" class="form-control" placeholder="What's your name?">
+                    <button id="continue-btn" class="btn btn--primary btn--full-width">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cooking Level Selection -->
+        <div id="level-screen" class="screen">
+            <div class="level-content">
+                <div class="sloth-mascot">🦥</div>
+                <h2>Choose your lazy cooking level:</h2>
+                <div class="level-options">
+                    <div class="level-card" data-level="1">
+                        <div class="level-icon">🥗</div>
+                        <h3>No-cook</h3>
+                        <p>Sandwiches, wraps, salads</p>
+                    </div>
+                    <div class="level-card" data-level="2">
+                        <div class="level-icon">🍳</div>
+                        <h3>One-pan meals</h3>
+                        <p>Everything in one pot/pan</p>
+                    </div>
+                    <div class="level-card" data-level="3">
+                        <div class="level-icon">⚡</div>
+                        <h3>Microwave-only</h3>
+                        <p>Quick microwave recipes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main App Content -->
+        <div id="main-app" class="screen">
+            
+            <!-- Home Tab -->
+            <div id="home-tab" class="tab-content active">
+                <header class="app-header">
+                    <div class="greeting">
+                        <span id="greeting-text">Hello, Chef! 🦥</span>
+                        <div class="sloth-quote" id="sloth-quote">Slow and steady wins the meal!</div>
+                    </div>
+                </header>
+
+                <main class="main-content">
+                    <!-- Featured Recipe -->
+                    <section class="featured-section">
+                        <h2>Today's Lazy Special</h2>
+                        <div class="featured-recipe" id="featured-recipe">
+                            <div class="recipe-image-container">
+                                <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&h=300&fit=crop" alt="Featured Recipe" class="recipe-image">
+                                <div class="recipe-badge">⭐ Featured</div>
+                            </div>
+                            <div class="recipe-info">
+                                <h3>5-Minute Vegetable Pulao</h3>
+                                <div class="recipe-meta">
+                                    <span class="time-badge">⏱️ 5 min</span>
+                                    <span class="ingredient-badge">🎯 3 ingredients</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quick Filters -->
+                    <section class="filters-section">
+                        <h2>Quick Filters</h2>
+                        <div class="quick-filters">
+                            <button class="filter-btn" data-filter="time" data-value="5">
+                                <span class="filter-icon">⏱️</span>
+                                <span>&lt;5 min</span>
+                            </button>
+                            <button class="filter-btn" data-filter="ingredients" data-value="3">
+                                <span class="filter-icon">🎯</span>
+                                <span>3-ingredients</span>
+                            </button>
+                            <button class="filter-btn" data-filter="method" data-value="microwave">
+                                <span class="filter-icon">⚡</span>
+                                <span>Microwave</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Fridge Detective -->
+                    <section class="fridge-section">
+                        <button class="fridge-detective-btn" id="fridge-detective-btn">
+                            <div class="fridge-icon">🔍</div>
+                            <div class="fridge-text">
+                                <h3>Fridge Detective</h3>
+                                <p>What's in your fridge?</p>
+                            </div>
+                        </button>
+                    </section>
+
+                    <!-- Cooking Levels -->
+                    <section class="levels-section">
+                        <h2>Lazy Cooking Levels</h2>
+                        <div class="cooking-levels">
+                            <div class="level-card-mini" data-level="1">
+                                <div class="level-icon">🥗</div>
+                                <div class="level-info">
+                                    <h4>No-cook</h4>
+                                    <p>Zero cooking required</p>
+                                </div>
+                            </div>
+                            <div class="level-card-mini" data-level="2">
+                                <div class="level-icon">🍳</div>
+                                <div class="level-info">
+                                    <h4>One-pan</h4>
+                                    <p>Minimal cleanup</p>
+                                </div>
+                            </div>
+                            <div class="level-card-mini" data-level="3">
+                                <div class="level-icon">⚡</div>
+                                <div class="level-info">
+                                    <h4>Microwave</h4>
+                                    <p>Super quick</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+
+            <!-- Search Tab -->
+            <div id="search-tab" class="tab-content">
+                <div class="search-header">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" class="form-control" placeholder="Search recipes or ingredients...">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                </div>
+                
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-category="all">All</button>
+                    <button class="filter-tab" data-category="no-cook">No-cook</button>
+                    <button class="filter-tab" data-category="one-pan">One-pan</button>
+                    <button class="filter-tab" data-category="microwave">Microwave</button>
+                </div>
+
+                <div class="recipes-grid" id="recipes-grid">
+                    <!-- Recipe cards will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Fridge Detective Tab -->
+            <div id="fridge-tab" class="tab-content">
+                <div class="fridge-header">
+                    <h2>🔍 Fridge Detective</h2>
+                    <p>Tell me what you have, I'll find you a recipe!</p>
+                </div>
+                
+                <div class="fridge-input-section">
+                    <div class="fridge-input">
+                        <input type="text" id="fridge-input" class="form-control" placeholder="Enter ingredients (e.g., eggs, bread, cheese)">
+                        <button id="find-recipes-btn" class="btn btn--primary">Find Recipes</button>
+                    </div>
+                </div>
+                
+                <div class="ingredient-suggestions">
+                    <p>Popular ingredients:</p>
+                    <div class="ingredient-tags">
+                        <span class="ingredient-tag">eggs</span>
+                        <span class="ingredient-tag">bread</span>
+                        <span class="ingredient-tag">cheese</span>
+                        <span class="ingredient-tag">pasta</span>
+                        <span class="ingredient-tag">rice</span>
+                        <span class="ingredient-tag">tuna</span>
+                    </div>
+                </div>
+                
+                <div class="fridge-results" id="fridge-results">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile-tab" class="tab-content">
+                <div class="profile-header">
+                    <div class="profile-avatar">🦥</div>
+                    <h2 id="profile-name">Lazy Chef</h2>
+                    <div class="cooking-streak">
+                        <span class="streak-icon">🔥</span>
+                        <span id="streak-count">3</span> day streak!
+                    </div>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="recipes-cooked">12</div>
+                        <div class="stat-label">Recipes Cooked</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="badges-earned">3</div>
+                        <div class="stat-label">Badges Earned</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="saved-recipes">5</div>
+                        <div class="stat-label">Saved Recipes</div>
+                    </div>
+                </div>
+
+                <div class="badges-section">
+                    <h3>Your Badges 🏆</h3>
+                    <div class="badges-grid" id="badges-grid">
+                        <!-- Badges will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="saved-recipes-section">
+                    <h3>Saved Recipes ❤️</h3>
+                    <div class="saved-recipes-list" id="saved-recipes-list">
+                        <!-- Saved recipes will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe Detail Modal -->
+            <div id="recipe-modal" class="modal hidden">
+                <div class="modal-content">
+                    <button class="modal-close" id="modal-close">&times;</button>
+                    <div class="recipe-detail" id="recipe-detail">
+                        <!-- Recipe details will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Modal for Badge Earned -->
+            <div id="badge-modal" class="modal hidden">
+                <div class="modal-content badge-earned">
+                    <button class="modal-close" id="badge-modal-close">&times;</button>
+                    <div class="badge-celebration">
+                        <div class="badge-icon-large" id="earned-badge-icon">🏆</div>
+                        <h2>Badge Earned!</h2>
+                        <h3 id="earned-badge-name">Badge Name</h3>
+                        <p id="earned-badge-description">Badge description</p>
+                        <button class="btn btn--primary" id="badge-continue">Awesome!</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <nav class="bottom-nav">
+                <button class="nav-btn active" data-tab="home">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-label">Home</span>
+                </button>
+                <button class="nav-btn" data-tab="search">
+                    <span class="nav-icon">🔍</span>
+                    <span class="nav-label">Search</span>
+                </button>
+                <button class="nav-btn" data-tab="fridge">
+                    <span class="nav-icon">🥶</span>
+                    <span class="nav-label">Fridge</span>
+                </button>
+                <button class="nav-btn" data-tab="profile">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-label">Profile</span>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
